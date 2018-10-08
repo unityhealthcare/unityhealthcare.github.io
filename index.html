@@ -118,7 +118,7 @@
     <div class="row">
       <div class="col-lg-12 text-center">
         <h2 class="section-heading">About</h2>
-        <h3 class="section-subheading text-muted"></h3>
+        <h3 class="section-subheading text-muted">Unity Healthcare values and beliefs are; Culture, Community, Collaboration, Diversity, Honesty, Knowledge, Respect</h3>
       </div>
     </div>
     <div class="row">
@@ -347,8 +347,8 @@
     
 
     <section class="quote">
-      <div class="container grid">
-        <div class="col-8_sm-12">
+      <div class="container grid-center">
+        <div class="col-9_sm-12">
           <p>&ldquo;<em>Upon suffering beyond suffering: the red nation shall rise again and it shall be a blessing for a sick world. A world filled with broken promises, selfishness and separations. A world longing for light again. I see a time of Seven Generations when all the colors of mankind will gather under the Sacred Tree of Life and the whole Earth will become one circle again.</em>&ldquo;</p>
 
 <p>-- Crazy Horse --</p>
@@ -382,7 +382,7 @@ Unity Healthcare is seeking to contract with Nurses in areas such as:</p>
     <div class="grid-spaceBetween">
       <div class="careers__positions col-4_md-12">
         
-          <label class="position" for="np">
+          <label class="position -active" for="np">
             NP
           </label>
         
@@ -400,7 +400,7 @@ Unity Healthcare is seeking to contract with Nurses in areas such as:</p>
         
       </div>
       
-        <input class="toggle-next" type="radio" name="position" id="np" />
+        <input class="toggle-next" type="radio" name="position" id="np" checked="true" />
         <div class="position__information col-7_md-12 text--lato text--medium" data-position="np">
           <h3 class="position__title">NP</h3>
           <p>$65-70 / hour based on location of assignment, services provided, experience, and qualifications. May increase if the Nurse qualifies for our Exclusive Partner Program (contact us for more details)</p>
@@ -618,7 +618,7 @@ unitymcch@gmail.com</p>
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <span class="copyright">Published under the Apache License 2.0.</span>
+        <span class="copyright">Your smile is your logo, your personality is your business card, how you leave others feeling after an expereince with your becomes your trademark. &ndash; Jay Danzie</span>
       </div>
       <div class="col-md-4">
         <ul class="list-inline social-buttons">
@@ -668,5 +668,15 @@ unitymcch@gmail.com</p>
 
 
 
+
+    <script>
+      $('input[type="radio"]').change(function () {
+        var label = $('label[for="' + this.id + '"]');
+
+        
+        label.siblings().removeClass('-active');
+        label.addClass('-active');
+      });
+    </script>
   </body>
 </html>
