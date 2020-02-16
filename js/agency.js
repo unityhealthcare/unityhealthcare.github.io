@@ -1,8 +1,8 @@
 // Smooth scrolling via animate()
 $(document).ready(function(){
-  if ($('.g-recaptcha')) {
-    checkReCaptcha()
-  }
+  // if ($('.g-recaptcha')) {
+  //   checkReCaptcha()
+  // }
 
   $("a").on('click', function(event) {
     if (this.hash && window.location.pathname == "/") {
@@ -52,11 +52,19 @@ $('form[id=contactForm]').submit(function(){
     url: this.getAttribute('action'),
     method: this.getAttribute('method'),
     data: $(this).serialize(),
-    success: function (_, _1, jqXHR) {
-      $('form[id=contactForm] #success').hide();
-      $('form[id=contactForm] #error').hide();
-      if (jqXHR.status == 200) {
-        $('form[id=contactForm] #success').show();
+    success: function (data, _1, jqXHR) {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(data, 'text/html');
+      if (doc.title !== 'Please Complete') {
+        $('form[id=contactForm] #success').hide();
+        $('form[id=contactForm] #error').hide();
+        if (jqXHR.status == 200) {
+          $('form[id=contactForm] #success').show();
+        }
+      } else {
+        $('form[id=contactForm] #success').hide();
+        $('form[id=contactForm] #error').hide();
+        $('form[id=contactForm] #error').show();
       }
     },
     error: function(){
@@ -70,21 +78,21 @@ $('form[id=contactForm]').submit(function(){
 });
 
 // Contact form validation
-$.validate({
-  modules : 'html5, toggleDisabled'
-});
+// $.validate({
+//   modules : 'html5, toggleDisabled'
+// });
 
 function onContactCaptcha($form) {
   $('form#contactForm').submit();
 }
 
-function checkReCaptcha() {
-  if (typeof grecaptcha === "undefined") {
-    $('.captcha-error').show();
-    setTimeout(checkReCaptcha, 200);
-  } else {
-    $('.captcha-error').hide();
-    $('.g-recaptcha-filler').hide();
-    $('.g-recaptcha').attr('disabled', true);
-  }
-}
+// function checkReCaptcha() {
+//   if (typeof grecaptcha === "undefined") {
+//     $('.captcha-error').show();
+//     setTimeout(checkReCaptcha, 200);
+//   } else {
+//     $('.captcha-error').hide();
+//     $('.g-recaptcha-filler').hide();
+//     $('.g-recaptcha').attr('disabled', true);
+//   }
+// }
